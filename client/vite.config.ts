@@ -22,4 +22,5 @@ export default defineConfig({
     outDir: '../server/public',
     emptyOutDir: true,
   },
+  base: '/hey-you/'
 })

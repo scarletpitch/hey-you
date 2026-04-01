@@ -1,5 +1,5 @@
 <template>
-  <div v-if="config">
+  <div>
     <WelcomeScreen
       :greeting="config.greeting"
       :is-active="isWelcome"
@@ -26,8 +26,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import axios from 'axios'
 import {
   WelcomeScreen,
   PrintingScreen,
@@ -35,19 +33,14 @@ import {
 } from '@/components'
 import { useFlow } from '@/composables/useFlow'
 import { useAudio } from '@/composables/useAudio'
-import type { AppConfig } from '@/types'
+import { siteConfig } from '@/siteConfig'
 
-const config = ref<AppConfig | null>(null)
+const config = siteConfig
 
 const { goTo, isWelcome, isPrinting, isCollection } = useFlow()
 
 // Play from 0:46, loop back at 1:17
-const audio = useAudio('/music/track.mp3', { loopStart: 46, loopEnd: 77 })
-
-onMounted(async () => {
-  const { data } = await axios.get<AppConfig>('/api/config')
-  config.value = data
-})
+const audio = useAudio(siteConfig.music.src, { loopStart: 46, loopEnd: 77 })
 
 function onStart() {
   goTo('printing')
