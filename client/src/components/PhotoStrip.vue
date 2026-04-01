@@ -25,33 +25,4 @@ defineProps<{
 }>()
 </script>
 
-<style lang="scss" scoped>
-@use '@/styles/variables' as *;
-
-.strip {
-  width: $strip-width;
-  background: $strip-kraft;
-  padding: 8px 8px 13px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-
-  &.compact {
-    width: $strip-width-compact;
-    padding: 7px 7px 12px;
-    gap: 3px;
-  }
-}
-
-.strip-caption {
-  padding-top: 7px;
-  text-align: center;
-
-  p {
-    font-family: $font-script;
-    font-size: 15px;
-    color: $ink-dark;
-    line-height: 1.6;
-  }
-}
-</style>
+<style lang="scss" scoped src="@/styles/components/_PhotoStrip.scss" />

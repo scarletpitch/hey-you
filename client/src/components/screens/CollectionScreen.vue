@@ -1,11 +1,15 @@
 <template>
   <div class="screen" :class="{ active: isActive }">
     <div class="pile">
+
+      <!-- Backdrop — inside pile so z-index is in same stacking context -->
+      <div class="backdrop" :class="{ show: isExpanded }" @click="isExpanded = false" />
+
       <!-- Greeting card (starts behind) -->
       <div
         class="layer card-layer"
-        :class="{ top: topLayer === 'card' }"
-        @click="topLayer = 'card'"
+        :class="{ top: topLayer === 'card', expanded: topLayer === 'card' && isExpanded }"
+        @click="onCardClick"
       >
         <div class="card-to">{{ card.to }}</div>
         <div class="card-msg" v-html="formattedMessage" />
@@ -15,8 +19,8 @@
       <!-- Photo strip (starts on top) -->
       <div
         class="layer strip-layer"
-        :class="{ top: topLayer === 'photo' }"
-        @click="topLayer = 'photo'"
+        :class="{ top: topLayer === 'photo', expanded: topLayer === 'photo' && isExpanded }"
+        @click="onStripClick"
       >
         <PhotoStrip
           :photos="photos"
@@ -25,9 +29,8 @@
           compact
         />
       </div>
-    </div>
 
-    <p class="hint">tap to reveal</p>
+    </div>
   </div>
 </template>
 
@@ -45,99 +48,30 @@ const props = defineProps<{
 }>()
 
 type Layer = 'photo' | 'card'
-const topLayer = ref<Layer>('photo')
+const topLayer   = ref<Layer>('photo')
+const isExpanded = ref(false)
+
+function onCardClick() {
+  if (topLayer.value !== 'card') {
+    topLayer.value = 'card'
+    isExpanded.value = false
+  } else {
+    isExpanded.value = !isExpanded.value
+  }
+}
+
+function onStripClick() {
+  if (topLayer.value !== 'photo') {
+    topLayer.value = 'photo'
+    isExpanded.value = false
+  } else {
+    isExpanded.value = !isExpanded.value
+  }
+}
 
 const formattedMessage = computed(() =>
   props.card.message.replace(/\n/g, '<br>'),
 )
 </script>
 
-<style lang="scss" scoped>
-@use '@/styles/variables' as *;
-@use '@/styles/mixins' as *;
-
-.screen {
-  @include screen-base;
-  overflow: hidden;
-
-  &.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
-}
-
-.pile {
-  position: relative;
-  width: 300px;
-  height: 490px;
-}
-
-.layer {
-  @include layer-base;
-
-  &.top {
-    z-index: 10;
-  }
-}
-
-// Photo strip layer
-.strip-layer {
-  top: 8px;
-  left: 60px;
-  transform: rotate(4deg);
-  box-shadow: $shadow-layer;
-  z-index: 2;
-
-  &.top {
-    transform: rotate(4deg) translateY(-6px) scale(1.025);
-    box-shadow: $shadow-layer-top;
-  }
-}
-
-// Greeting card layer
-.card-layer {
-  width: 265px;
-  background: radial-gradient(ellipse at 35% 40%, #d6ccba, $card-kraft 65%, $card-kraft-dark);
-  padding: 28px 22px 28px 28px;
-  top: 130px;
-  left: 8px;
-  transform: rotate(-5.5deg);
-  box-shadow: $shadow-layer;
-  z-index: 1;
-
-  &.top {
-    transform: rotate(-5.5deg) translateY(-6px) scale(1.025);
-    box-shadow: $shadow-layer-top;
-  }
-}
-
-.card-to {
-  font-family: $font-script;
-  font-size: 24px;
-  color: $ink-dark;
-  margin-bottom: 18px;
-}
-
-.card-msg {
-  font-family: $font-script;
-  font-size: 19px;
-  color: $ink-dark;
-  line-height: 1.75;
-  margin-bottom: 24px;
-}
-
-.card-from {
-  font-family: $font-script;
-  font-size: 24px;
-  color: $ink-dark;
-  text-align: right;
-}
-
-.hint {
-  margin-top: 24px;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  color: rgba(255, 255, 255, 0.22);
-  text-transform: uppercase;
-}
-</style>
+<style lang="scss" scoped src="@/styles/components/screens/_CollectionScreen.scss" />

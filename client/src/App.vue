@@ -23,10 +23,12 @@
       :is-active="isCollection"
     />
 
+    <!-- MusicPlayer temporarily hidden
     <MusicPlayer
       :track="config.music"
       :auto-play-on-mount="musicStarted"
     />
+    -->
   </div>
 </template>
 
@@ -37,13 +39,13 @@ import {
   WelcomeScreen,
   PrintingScreen,
   CollectionScreen,
-  MusicPlayer,
+  // MusicPlayer,
 } from '@/components'
 import { useFlow } from '@/composables/useFlow'
 import type { AppConfig } from '@/types'
 
-const config       = ref<AppConfig | null>(null)
-const musicStarted = ref(false)
+const config = ref<AppConfig | null>(null)
+// const musicStarted = ref(false)
 
 const { goTo, isWelcome, isPrinting, isCollection } = useFlow()
 
@@ -54,6 +56,6 @@ onMounted(async () => {
 
 function onStart() {
   goTo('printing')
-  musicStarted.value = true
+  // musicStarted.value = true
 }
 </script>

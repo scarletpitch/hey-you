@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed -i '' 's|@use '\\\\''../../variables'\\\\'' as \\\\*;|@use '\\\\''variables'\\\\'' as *;|g' /Users/pisha/hey-you/client/src/styles/components/screens/_WelcomeScreen.scss /Users/pisha/hey-you/client/src/styles/components/screens/_PrintingScreen.scss /Users/pisha/hey-you/client/src/styles/components/screens/_CollectionScreen.scss)",
+      "Bash(sed -i '' 's|@use '\\\\''../../mixins'\\\\'' as \\\\*;|@use '\\\\''mixins'\\\\'' as *;|g' /Users/pisha/hey-you/client/src/styles/components/screens/_WelcomeScreen.scss /Users/pisha/hey-you/client/src/styles/components/screens/_PrintingScreen.scss /Users/pisha/hey-you/client/src/styles/components/screens/_CollectionScreen.scss)",
+      "Bash(sed -i '' 's|@use '\\\\''../variables'\\\\'' as \\\\*;|@use '\\\\''variables'\\\\'' as *;|g' /Users/pisha/hey-you/client/src/styles/components/_MusicPlayer.scss /Users/pisha/hey-you/client/src/styles/components/_PhotoFrame.scss /Users/pisha/hey-you/client/src/styles/components/_PhotoStrip.scss)",
+      "Bash(sed -i '' 's|@use '\\\\''../mixins'\\\\'' as \\\\*;|@use '\\\\''mixins'\\\\'' as *;|g' /Users/pisha/hey-you/client/src/styles/components/_MusicPlayer.scss)",
+      "Bash(sed -i '' 's|@use '\\\\''variables'\\\\'' as \\\\*;|@use '\\\\''variables'\\\\'' as *;|g' /Users/pisha/hey-you/client/src/styles/_mixins.scss)",
+      "Bash(sed -i '' 's|@use '\\\\''variables'\\\\'' as \\\\*;|@use '\\\\''../../variables'\\\\'' as *;|g' /Users/pisha/hey-you/client/src/styles/components/screens/_WelcomeScreen.scss /Users/pisha/hey-you/client/src/styles/components/screens/_PrintingScreen.scss /Users/pisha/hey-you/client/src/styles/components/screens/_CollectionScreen.scss)",
+      "Bash(sed -i '' 's|@use '\\\\''mixins'\\\\'' as \\\\*;|@use '\\\\''../../mixins'\\\\'' as *;|g' /Users/pisha/hey-you/client/src/styles/components/screens/_WelcomeScreen.scss /Users/pisha/hey-you/client/src/styles/components/screens/_PrintingScreen.scss /Users/pisha/hey-you/client/src/styles/components/screens/_CollectionScreen.scss)",
+      "Bash(sed -i '' 's|@use '\\\\''variables'\\\\'' as \\\\*;|@use '\\\\''../variables'\\\\'' as *;|g' /Users/pisha/hey-you/client/src/styles/components/_MusicPlayer.scss /Users/pisha/hey-you/client/src/styles/components/_PhotoFrame.scss /Users/pisha/hey-you/client/src/styles/components/_PhotoStrip.scss)",
+      "Bash(sed -i '' 's|@use '\\\\''mixins'\\\\'' as \\\\*;|@use '\\\\''../mixins'\\\\'' as *;|g' /Users/pisha/hey-you/client/src/styles/components/_MusicPlayer.scss)"
+    ]
+  }
+}

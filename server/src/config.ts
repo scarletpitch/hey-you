@@ -2,8 +2,8 @@ import type { AppConfig } from './types'
 
 export const appConfig: AppConfig = {
   names: {
-    from: 'Marisa',
-    to: 'Gena',
+    from: 'Noon',
+    to: 'Ruj',
   },
   greeting: 'hey you.',
   occasion: {
@@ -11,13 +11,13 @@ export const appConfig: AppConfig = {
     line2: 'birthday',
   },
   card: {
-    to: 'Gena,',
-    message: "I wish you peace, happiness,\nand less back pain",
-    from: 'Marisa',
+    to: 'Ruj,',
+    message: "Happy birthday, \naWishing you a year full of good energy, meaningful moments, and everything that makes you genuinely happy.",
+    from: 'Noon',
   },
   caption: {
-    line1: 'Marisa & Gena',
-    line2: "Valentine's 2024",
+    line1: `Ruj's Day`,
+    line2: "2026",
   },
   photos: [
     { src: '/photos/photo1.jpg', alt: 'Photo 1' },
@@ -25,8 +25,8 @@ export const appConfig: AppConfig = {
     { src: '/photos/photo3.jpg', alt: 'Photo 3' },
   ],
   music: {
-    title: 'The One',
-    artist: 'Kodaline',
+    title: 'Those Eyes',
+    artist: 'New West',
     src: '/music/track.mp3',
     durationSeconds: 164,
   },

@@ -1,0 +1,147 @@
+@use '../../variables' as *;
+@use '../../mixins' as *;
+
+// ── Screen ───────────────────────────────────────────────────────────────────
+
+.screen {
+  @include screen-base;
+  justify-content: center;
+  @include safe-top(16px);
+  padding-bottom: 80px;
+  gap: 12px;
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+// ── Header ───────────────────────────────────────────────────────────────────
+
+.hdr {
+  text-align: center;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.hdr-top {
+  display: inline;
+  font-size: 36px;
+  font-weight: 300;
+  color: $white;
+  letter-spacing: 0.02em;
+}
+
+.hdr-bot {
+  display: inline;
+  font-family: $font-script;
+  font-size: 48px;
+  color: $white;
+  margin-left: 4px;
+}
+
+// ── Status ───────────────────────────────────────────────────────────────────
+
+.print-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.dot {
+  flex-shrink: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: $dot-printing;
+  animation: blink 1.1s ease-in-out infinite;
+
+  &.done {
+    background: $dot-done;
+    animation: none;
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.15; }
+}
+
+.dot-lbl {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.5);
+
+  &.done { color: $dot-done; }
+}
+
+// ── Booth image + strip ───────────────────────────────────────────────────────
+
+.booth-wrap {
+  width: 95vw;
+  flex-shrink: 0;
+  position: relative;   // anchor for .strip-exit absolute positioning
+}
+
+.booth-img {
+  width: 100%;
+  display: block;
+}
+
+.strip-exit {
+  // Absolutely positioned over the booth image at the print slot.
+  position: absolute;
+  left: calc(37% + 19px);
+  top: calc(66% - 9px);
+  z-index: 2;
+}
+
+.strip-window {
+  width: 14px;
+  height: 0;
+  overflow: hidden;
+  transition: height 7s cubic-bezier(0.08, 0.0, 0.25, 1.0);
+
+  &.go {
+    height: 46px;
+  }
+}
+
+.mini-strip {
+  width: 14px;
+  height: 46px;
+  background: #c4bdb2;
+  border-radius: 1px;
+}
+
+// ── Collect button ────────────────────────────────────────────────────────────
+
+.collect-btn {
+  position: fixed;
+  bottom: calc(env(safe-area-inset-bottom) + 124px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 13px 28px;
+  background: rgba(20, 24, 50, 0.85);
+  border: 1px solid rgba(180, 220, 180, 0.4);
+  border-radius: 50px;
+  color: $collect-green;
+  font-family: $font-serif;
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  -webkit-appearance: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.55s ease;
+  white-space: nowrap;
+  z-index: 10;
+
+  &.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &:active { opacity: 0.45; }
+}

@@ -7,5 +7,5 @@ dist/
 client/public/photos/
 client/public/music/
 
-# build output served by Express
+# build output — Railway builds this automatically
 server/public/
