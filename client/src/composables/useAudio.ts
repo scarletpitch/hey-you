@@ -1,21 +1,21 @@
 import { ref, computed, onUnmounted } from 'vue'
 
-export function useAudio(src: string) {
-  const audio        = new Audio(src)
-  audio.loop         = true
-  audio.preload      = 'metadata'
+export function useAudio(
+  src: string,
+  options?: { loopStart?: number; loopEnd?: number },
+) {
+  const { loopStart = 0, loopEnd } = options ?? {}
 
-  const isPlaying    = ref(false)
-  const currentTime  = ref(0)
-  const duration     = ref(0)
-  let   rafId        = 0
+  const audio       = new Audio(src)
+  audio.preload     = 'auto'
+
+  const isPlaying   = ref(false)
+  const currentTime = ref(0)
+  const duration    = ref(0)
+  let   rafId       = 0
 
   audio.addEventListener('loadedmetadata', () => {
     duration.value = audio.duration
-  })
-
-  audio.addEventListener('ended', () => {
-    isPlaying.value = false
   })
 
   const progress = computed(() =>
@@ -24,6 +24,10 @@ export function useAudio(src: string) {
 
   function tick() {
     currentTime.value = audio.currentTime
+    // Loop the segment
+    if (loopEnd !== undefined && audio.currentTime >= loopEnd) {
+      audio.currentTime = loopStart
+    }
     if (isPlaying.value) {
       rafId = requestAnimationFrame(tick)
     }
@@ -35,8 +39,13 @@ export function useAudio(src: string) {
       isPlaying.value = true
       rafId = requestAnimationFrame(tick)
     } catch {
-      // autoplay blocked — user must tap first
+      // autoplay blocked — needs user gesture first
     }
+  }
+
+  async function playFrom(time: number) {
+    audio.currentTime = time
+    await play()
   }
 
   function pause() {
@@ -61,5 +70,5 @@ export function useAudio(src: string) {
     audio.src = ''
   })
 
-  return { isPlaying, currentTime, duration, progress, play, pause, toggle, seek }
+  return { isPlaying, currentTime, duration, progress, play, playFrom, pause, toggle, seek }
 }

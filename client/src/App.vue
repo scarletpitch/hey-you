@@ -12,7 +12,7 @@
       :caption-line2="config.caption.line2"
       :occasion="config.occasion"
       :is-active="isPrinting"
-      @collect="goTo('collection')"
+      @collect="onCollect"
     />
 
     <CollectionScreen
@@ -22,13 +22,6 @@
       :card="config.card"
       :is-active="isCollection"
     />
-
-    <!-- MusicPlayer temporarily hidden
-    <MusicPlayer
-      :track="config.music"
-      :auto-play-on-mount="musicStarted"
-    />
-    -->
   </div>
 </template>
 
@@ -39,15 +32,17 @@ import {
   WelcomeScreen,
   PrintingScreen,
   CollectionScreen,
-  // MusicPlayer,
 } from '@/components'
 import { useFlow } from '@/composables/useFlow'
+import { useAudio } from '@/composables/useAudio'
 import type { AppConfig } from '@/types'
 
 const config = ref<AppConfig | null>(null)
-// const musicStarted = ref(false)
 
 const { goTo, isWelcome, isPrinting, isCollection } = useFlow()
+
+// Play from 0:46, loop back at 1:17
+const audio = useAudio('/music/track.mp3', { loopStart: 46, loopEnd: 77 })
 
 onMounted(async () => {
   const { data } = await axios.get<AppConfig>('/api/config')
@@ -56,6 +51,10 @@ onMounted(async () => {
 
 function onStart() {
   goTo('printing')
-  // musicStarted.value = true
+}
+
+function onCollect() {
+  goTo('collection')
+  audio.playFrom(46)
 }
 </script>
