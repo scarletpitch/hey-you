@@ -1,0 +1,6 @@
+export { default as PhotoFrame } from './PhotoFrame.vue'
+export { default as PhotoStrip } from './PhotoStrip.vue'
+export { default as MusicPlayer } from './MusicPlayer.vue'
+export { default as WelcomeScreen } from './screens/WelcomeScreen.vue'
+export { default as PrintingScreen } from './screens/PrintingScreen.vue'
+export { default as CollectionScreen } from './screens/CollectionScreen.vue'

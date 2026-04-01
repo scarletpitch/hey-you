@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.env
+*.local
+
+# personal photos — add your own locally, never commit them
+client/public/photos/
+client/public/music/
+
+# build output served by Express
+server/public/

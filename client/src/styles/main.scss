@@ -1,0 +1,50 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'reset';
+
+// ── Global base ──────────────────────────────────────────────────────────────
+
+html,
+body {
+  background: $bg;
+  font-family: $font-serif;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+// ── Screen shell ─────────────────────────────────────────────────────────────
+
+.screen {
+  @include screen-base;
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+// ── Shared header (Printing screen) ──────────────────────────────────────────
+
+.hdr {
+  text-align: center;
+  line-height: 1;
+  margin-bottom: 32px;
+}
+
+.hdr-top {
+  display: block;
+  font-size: 40px;
+  font-weight: 300;
+  color: $white;
+}
+
+.hdr-bot {
+  display: block;
+  font-family: $font-script;
+  font-size: 62px;
+  color: $white;
+  margin-top: -8px;
+}
