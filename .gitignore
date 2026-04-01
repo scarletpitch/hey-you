@@ -4,8 +4,7 @@ dist/
 *.local
 
 # personal photos — add your own locally, never commit them
-client/public/photos/
-client/public/music/
+
 
 # build output — Railway builds this automatically
-server/public/
+
