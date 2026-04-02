@@ -6,9 +6,9 @@
 .screen {
   @include screen-base;
   justify-content: center;
-  @include safe-top(16px);
-  padding-bottom: 80px;
-  gap: 12px;
+  @include safe-top(8px);
+  padding-bottom: 100px;
+  gap: 6px;
 
   &.active {
     opacity: 1;
@@ -19,7 +19,7 @@
 // ── Header ───────────────────────────────────────────────────────────────────
 
 .hdr {
-  width: min(85vw, 420px);
+  width: min(70vw, 320px);
   flex-shrink: 0;
   display: block;
 }
@@ -64,13 +64,17 @@
 
 .booth-wrap {
   width: 95vw;
-  flex-shrink: 0;
+  max-height: calc(100vh - 260px);
+  flex-shrink: 1;
   position: relative;
-  margin-top: 20px;
+  overflow: hidden;
 }
 
 .booth-img {
   width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top;
   display: block;
 }
 
