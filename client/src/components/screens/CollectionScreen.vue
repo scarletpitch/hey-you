@@ -75,3 +75,4 @@ const formattedMessage = computed(() =>
 </script>
 
 <style lang="scss" scoped src="@/styles/components/screens/_CollectionScreen.scss" />
+
