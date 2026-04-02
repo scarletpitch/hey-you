@@ -7,4 +7,6 @@ dist/
 
 
 # build output — Railway builds this automatically
+server/public/assets/
+server/public/index.html
 
