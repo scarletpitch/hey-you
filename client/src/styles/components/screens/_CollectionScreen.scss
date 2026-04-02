@@ -13,8 +13,8 @@
 
 .pile {
   position: relative;
-  width: 300px;
-  height: 620px;
+  width: min(300px, 90vw);
+  height: min(620px, 70vh);
 }
 
 // Backdrop lives inside pile so z-index is in the same stacking context
