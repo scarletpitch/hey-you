@@ -10,6 +10,8 @@
   padding-bottom: 80px;
   gap: 12px;
 
+  transform: translateY(-30px); // 👈 move up a bit
+
   &.active {
     opacity: 1;
     pointer-events: auto;
@@ -119,7 +121,7 @@
 
 .collect-btn {
   position: fixed;
-  bottom: calc(env(safe-area-inset-bottom) + 32px);
+  bottom: calc(env(safe-area-inset-bottom) + 70px);
   left: 50%;
   transform: translateX(-50%);
   padding: 13px 28px;
