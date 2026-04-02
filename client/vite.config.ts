@@ -19,8 +19,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: '../server/public',
+    outDir: 'dist',
     emptyOutDir: true,
-  },
-  base: '/hey-you/'
+  }
 })

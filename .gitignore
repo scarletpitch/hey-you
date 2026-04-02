@@ -5,7 +5,8 @@ node_modules/
 # personal photos — add your own locally, never commit them
 
 
-# build output — Railway builds this automatically
+# build output
 server/public/assets/
 server/public/index.html
+client/dist/
 
