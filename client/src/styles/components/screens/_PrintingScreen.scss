@@ -10,8 +10,6 @@
   padding-bottom: 80px;
   gap: 12px;
 
-  transform: translateY(50px); //
-
   &.active {
     opacity: 1;
     pointer-events: auto;
@@ -83,7 +81,8 @@
 .booth-wrap {
   width: 95vw;
   flex-shrink: 0;
-  position: relative;   // anchor for .strip-exit absolute positioning
+  position: relative;
+  margin-top: 20px;
 }
 
 .booth-img {
