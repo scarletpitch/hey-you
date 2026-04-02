@@ -2,10 +2,7 @@
   <div class="screen" :class="{ active: isActive }">
 
     <!-- Header -->
-    <div class="hdr">
-      <span class="hdr-top">{{ occasion.line1 }}</span>
-      <span class="hdr-bot">{{ occasion.line2 }}</span>
-    </div>
+    <img class="hdr" src="/hdr.png" alt="happy birthday" />
 
     <!-- Status -->
     <div class="print-status">

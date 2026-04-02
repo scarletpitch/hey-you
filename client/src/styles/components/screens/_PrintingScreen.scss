@@ -19,25 +19,9 @@
 // ── Header ───────────────────────────────────────────────────────────────────
 
 .hdr {
-  text-align: center;
-  line-height: 1;
+  width: min(85vw, 420px);
   flex-shrink: 0;
-}
-
-.hdr-top {
-  display: inline;
-  font-size: 36px;
-  font-weight: 300;
-  color: $white;
-  letter-spacing: 0.02em;
-}
-
-.hdr-bot {
-  display: inline;
-  font-family: $font-script;
-  font-size: 48px;
-  color: $white;
-  margin-left: 4px;
+  display: block;
 }
 
 // ── Status ───────────────────────────────────────────────────────────────────
